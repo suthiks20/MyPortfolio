@@ -66,6 +66,7 @@ function CertCard({ cert, onClick }) {
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
       className="cert-card relative flex h-full cursor-pointer flex-col rounded-xl border border-cyan/30 bg-[#13131a]/90 backdrop-blur-[12px] shadow-[0_0_15px_rgba(0,217,255,0.18)] transition-colors duration-150 hover:border-cyan/70 hover:shadow-[0_0_28px_#00d9ff,0_0_16px_#ff006e]"
       onClick={() => onClick?.(cert)}
+      onTouchStart={() => onClick?.(cert)}
     >
       <div className="relative flex-1 min-h-0">
         <img
@@ -83,7 +84,7 @@ function CertCard({ cert, onClick }) {
   )
 }
 
-function Carousel({ group }) {
+function Carousel({ group, onClick }) {
   const scrollRef = useRef(null)
 
   const scrollDelta = (dx) => {
@@ -100,7 +101,7 @@ function Carousel({ group }) {
     >
       <div className="flex gap-4 sm:gap-6 px-1 py-4">
         {group.map((cert) => (
-          <CertCard key={cert.image} cert={cert} onClick={() => onClick?.(cert)} />
+          <CertCard key={cert.image} cert={cert} onClick={onClick} />
         ))}
       </div>
       <button
