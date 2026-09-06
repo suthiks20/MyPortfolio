@@ -64,9 +64,9 @@ function CertCard({ cert, onClick }) {
     <motion.div
       whileHover={{ scale: 1.08 }}
       transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-      className="cert-card relative flex h-full cursor-pointer flex-col rounded-xl border border-cyan/30 bg-[#13131a]/90 backdrop-blur-[12px] shadow-[0_0_15px_rgba(0,217,255,0.18)] transition-colors duration-150 hover:border-cyan/70 hover:shadow-[0_0_28px_#00d9ff,0_0_16px_#ff006e]"
+      className="cert-card relative flex h-full cursor-pointer touch-none flex-col rounded-xl border border-cyan/30 bg-[#13131a]/90 backdrop-blur-[12px] shadow-[0_0_15px_rgba(0,217,255,0.18)] transition-colors duration-150 hover:border-cyan/70 hover:shadow-[0_0_28px_#00d9ff,0_0_16px_#ff006e]"
       onClick={() => onClick?.(cert)}
-      onTouchStart={() => onClick?.(cert)}
+      onTouchStart={(e) => { e.preventDefault(); onClick?.(cert) }}
     >
       <div className="relative flex-1 min-h-0">
         <img
