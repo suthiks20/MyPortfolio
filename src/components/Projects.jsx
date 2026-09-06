@@ -305,7 +305,7 @@ function ProjectVisual({ project, className = '' }) {
   const glow = { boxShadow: `0 40px 110px -30px ${from}55, 0 30px 80px 80px -40px rgba(0,0,0,0.9)` }
 
   return (
-    <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12] w-full ${className}`} style={glow}>
+    <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12] ${className}`} style={glow}>
       {/* window chrome */}
       <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3 sm:px-5 sm:py-3.5">
         <span className="h-3 w-3 rounded-full bg-magenta/80" />
@@ -449,9 +449,74 @@ function ProjectSection({ project }) {
       />
 
       <div className="container-x section-pad w-full">
-        <div className="grid grid-cols-12 items-center gap-14">
-          {/* visual — left */}
-          <div className="proj-card relative col-span-12 sm:col-span-12 md:col-span-6">
+        {/* ── mobile-only: stacked compact layout ── */}
+        <div className="block md:hidden flex flex-col items-center gap-4">
+          <div className="relative w-full max-w-[260px] overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12]" style={{ boxShadow: `0 20px 60px -20px rgba(0,0,0,0.9)` }}>
+            <div className="flex items-center gap-2 border-b border-white/8 px-3 py-2.5">
+              <span className="h-2.5 w-2.5 rounded-full bg-magenta/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-ink/25" />
+              <span className="h-2.5 w-2.5 rounded-full bg-lime/80" />
+              <div className="ml-3 flex-1 truncate rounded-md bg-white/5 px-2 py-0.5 font-mono text-[9px] text-ink/40">
+                {project.domain}
+              </div>
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="pv-inner absolute -inset-[10%]">
+                <ThemedVisual project={project} />
+                <div className="glass absolute bottom-[9%] right-[6%] rounded-xl px-3 py-2.5 shadow-[0_0_20px_rgba(0,217,255,0.12)]">
+                  <div className="flex items-center gap-2">
+                    <span className="h-2 w-2 rounded-full bg-lime animate-pulse-soft shadow-[0_0_8px_#84cc16]" />
+                    <span className="font-mono text-[8px] uppercase tracking-[0.3em] text-ink/50">{project.status}</span>
+                  </div>
+                  <p className="mt-0.5 font-display text-base font-bold glow-text-cyan" style={{ color: project.accent[0] }}>
+                    {project.statusValue}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="w-full max-w-[320px] text-center">
+            <div className="flex flex-col items-center mb-1">
+              <span className="text-magenta">[{project.index}]</span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.35em] text-cyan">{project.name}</span>
+              <span className="h-px w-5 bg-cyan/50 shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
+            </div>
+            <h3 className="mt-1 text-xl font-display font-black leading-tight text-ink drop-shadow-[0_0_20px_rgba(0,217,255,0.25)] break-words">
+              {project.name}
+            </h3>
+            <p className="mt-0.5 text-[10px] text-ink/70 break-words">{project.tagline}</p>
+
+            <div className="mt-1.5 flex flex-wrap justify-center gap-x-0.5 gap-y-0.5">
+              {project.tech.map((t) => (
+                <span key={t} className="proj-pill pill text-[8px] px-1 py-0.5 whitespace-nowrap">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+            <blockquote className="mt-1.5 border-l-2 pl-1.5 font-mono text-[8px] leading-relaxed text-ink/55 break-words" style={{ borderColor: project.accent[0], boxShadow: `-3px 0 6px -5px ${project.accent[0]}66` }}>
+              “{project.quote}”
+            </blockquote>
+
+            {project.description && (
+              <p className="mt-0.5 text-[8px] leading-relaxed text-ink/60 break-words">{project.description}</p>
+            )}
+
+            <div className="mt-2 flex flex-col items-center gap-1.5">
+              <RippleButton href={project.live} target="_blank" rel="noreferrer" className="btn-primary w-full text-[11px]">
+                <ExternalLink size={11} /> Live
+              </RippleButton>
+              <RippleButton href={LINKS.github} target="_blank" rel="noreferrer" className="btn-ghost w-full text-[11px]">
+                <GithubIcon size={11} /> GitHub
+              </RippleButton>
+            </div>
+          </div>
+        </div>
+
+        {/* ── desktop: original side-by-side layout ── */}
+        <div className="hidden md:grid grid-cols-12 items-center gap-14">
+          <div className="proj-card relative col-span-12 md:col-span-6">
             <div
               aria-hidden
               className="absolute -inset-4 rounded-[28px] opacity-70 blur-2xl animate-pulse-soft"
@@ -462,14 +527,12 @@ function ProjectSection({ project }) {
             </Tilt>
           </div>
 
-          {/* copy — right */}
-          <div className="proj-text col-span-12 sm:col-span-12 md:col-span-6 overflow-hidden">
+          <div className="proj-text col-span-12 md:col-span-6 overflow-hidden">
             <div className="flex flex-col items-center mb-2">
               <span className="text-magenta">[{project.index}]</span>
               <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-cyan">{project.name}</span>
               <span className="h-px w-6 sm:w-16 bg-cyan/50 shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
-            </div>
-            <h3 className="mt-1 sm:mt-8 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-black leading-tight text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)] text-center sm:text-left break-words">
+            </div>              <h3 className="mt-1 sm:mt-8 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-black leading-tight text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)] text-center sm:text-left break-words">
               {project.name}
             </h3>
             <p className="mt-1 sm:mt-3 text-[11px] sm:text-base md:text-lg text-ink/70 text-center sm:text-left break-words">{project.tagline}</p>
@@ -491,10 +554,10 @@ function ProjectSection({ project }) {
             )}
 
             <div className="mt-3 sm:mt-10 flex flex-col items-center justify-center gap-2 sm:flex-row sm:justify-start sm:gap-5">
-              <RippleButton href={project.live} target="_blank" rel="noreferrer" className="btn-primary w-full sm:w-auto text-[12px] sm:text-sm">
+              <RippleButton href={project.live} target="_blank" rel="noreferrer" className="btn-primary sm:w-auto text-[12px] sm:text-sm">
                 <ExternalLink size={13} sm:size={16} /> Live
               </RippleButton>
-              <RippleButton href={LINKS.github} target="_blank" rel="noreferrer" className="btn-ghost w-full sm:w-auto text-[12px] sm:text-sm">
+              <RippleButton href={LINKS.github} target="_blank" rel="noreferrer" className="btn-ghost sm:w-auto text-[12px] sm:text-sm">
                 <GithubIcon size={13} sm:size={16} /> GitHub
               </RippleButton>
             </div>
