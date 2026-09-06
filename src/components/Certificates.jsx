@@ -131,12 +131,37 @@ function Lightbox({ cert, onClose }) {
   if (!cert) return null
   const imageRef = useRef(null)
   const [zoom, setZoom] = useState(1)
+  const pinchStart = useRef(null)
 
   const handleWheel = (e) => {
     if (!imageRef.current || !cert.image) return
     e.preventDefault()
     setZoom((z) => Math.max(1, Math.min(5, z + (e.deltaY > 0 ? -0.1 : 0.1))))
   }
+
+  const handleTouchStart = (e) => {
+    if (e.touches.length === 2) {
+      pinchStart.current = {
+        dist: Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY,
+        ),
+        zoom,
+      }
+    }
+  }
+  const handleTouchMove = (e) => {
+    if (e.touches.length === 2 && pinchStart.current) {
+      e.preventDefault()
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY,
+      )
+      const delta = dist - pinchStart.current.dist
+      setZoom((z) => Math.max(1, Math.min(5, pinchStart.current.zoom + delta * 0.01)))
+    }
+  }
+  const handleTouchEnd = () => { pinchStart.current = null }
 
   return (
     <motion.div
@@ -152,14 +177,17 @@ function Lightbox({ cert, onClose }) {
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
         transition={{ type: 'spring', stiffness: 280, damping: 26 }}
-        className="relative w-full max-w-3xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,217,255,0.35)] border border-white/10"
+        className="relative w-full max-w-3xl max-w-[95vw] rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,217,255,0.35)] border border-white/10"
         onClick={(e) => e.stopPropagation()}
       >
         {/* image area — scrollable zoom only */}
         <div
           ref={imageRef}
-          className="relative overflow-auto bg-[#111] max-h-[60vh]"
+          className="relative overflow-auto bg-[#111] max-h-[60vh] touch-pan-y"
           onWheel={handleWheel}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           <div
             className="flex items-center justify-center p-4"
