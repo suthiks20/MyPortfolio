@@ -300,24 +300,24 @@ function ThemedVisual({ project }) {
 
 /* ---------------------------------- card shell ---------------------------------- */
 
-function ProjectVisual({ project }) {
+function ProjectVisual({ project, className = '' }) {
   const [from] = project.accent
-  const glow = { boxShadow: `0 40px 110px -30px ${from}55, 0 30px 80px -40px rgba(0,0,0,0.9)` }
+  const glow = { boxShadow: `0 40px 110px -30px ${from}55, 0 30px 80px 80px -40px rgba(0,0,0,0.9)` }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12]" style={glow}>
+    <div className={`relative overflow-hidden rounded-2xl border border-white/10 bg-[#0c0d12] w-full ${className}`} style={glow}>
       {/* window chrome */}
-      <div className="flex items-center gap-2 border-b border-white/8 px-5 py-3.5">
+      <div className="flex items-center gap-2 border-b border-white/8 px-4 py-3 sm:px-5 sm:py-3.5">
         <span className="h-3 w-3 rounded-full bg-magenta/80" />
         <span className="h-3 w-3 rounded-full bg-ink/25" />
         <span className="h-3 w-3 rounded-full bg-lime/80" />
-        <div className="ml-4 flex-1 truncate rounded-md bg-white/5 px-3 py-1 font-mono text-[11px] text-ink/40">
+        <div className="ml-4 flex-1 truncate rounded-md bg-white/5 px-2 py-1 font-mono text-[10px] sm:text-[11px] text-ink/40">
           {project.domain}
         </div>
       </div>
 
       {/* parallax viewport */}
-      <div className="relative aspect-[16/10] overflow-hidden">
+      <div className="relative aspect-[4/3] sm:aspect-[16/10] overflow-hidden">
         <div className="pv-inner absolute -inset-[10%]">
           <ThemedVisual project={project} />
 
@@ -451,7 +451,7 @@ function ProjectSection({ project }) {
       <div className="container-x section-pad w-full">
         <div className="grid grid-cols-12 items-center gap-14">
           {/* visual — left */}
-          <div className="proj-card relative col-span-12 md:col-span-6">
+          <div className="proj-card relative col-span-12 sm:col-span-12 md:col-span-6">
             <div
               aria-hidden
               className="absolute -inset-4 rounded-[28px] opacity-70 blur-2xl animate-pulse-soft"
@@ -463,34 +463,31 @@ function ProjectSection({ project }) {
           </div>
 
           {/* copy — right */}
-          <div className="proj-text col-span-12 md:col-span-6">
-            <div className="flex items-center justify-center gap-2 mb-2">
+          <div className="proj-text col-span-12 sm:col-span-12 md:col-span-6 overflow-hidden">
+            <div className="flex flex-col items-center mb-2">
               <span className="text-magenta">[{project.index}]</span>
               <span className="font-mono text-[10px] sm:text-xs uppercase tracking-[0.35em] text-cyan">{project.name}</span>
               <span className="h-px w-6 sm:w-16 bg-cyan/50 shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
             </div>
-            <h3 className="mt-2 sm:mt-8 text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-black leading-none text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)] text-center sm:text-left">
+            <h3 className="mt-1 sm:mt-8 text-xl sm:text-3xl md:text-5xl lg:text-6xl font-display font-black leading-tight text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)] text-center sm:text-left break-words">
               {project.name}
             </h3>
-            <p className="mt-1 sm:mt-4 text-xs sm:text-lg text-ink/70 text-center sm:text-left">{project.tagline}</p>
+            <p className="mt-1 sm:mt-3 text-[11px] sm:text-base md:text-lg text-ink/70 text-center sm:text-left break-words">{project.tagline}</p>
 
-            <div className="mt-2 sm:mt-8 flex flex-wrap justify-center sm:justify-start gap-1.5 sm:gap-3">
+            <div className="mt-2 sm:mt-4 flex flex-wrap justify-center gap-x-1 gap-y-1">
               {project.tech.map((t) => (
-                <span key={t} className="proj-pill pill text-[10px] sm:text-xs px-2 sm:px-5 py-1 sm:py-2">
+                <span key={t} className="proj-pill pill text-[9px] sm:text-xs px-1.5 sm:px-4 py-0.5 sm:py-1.5 whitespace-nowrap">
                   {t}
                 </span>
               ))}
             </div>
 
-            <blockquote
-              className="mt-2 sm:mt-8 border-l-2 pl-2 sm:pl-6 font-mono text-[10px] sm:text-sm leading-relaxed text-ink/55 text-center sm:text-left"
-              style={{ borderColor: project.accent[0], boxShadow: `-6px 0 12px -8px ${project.accent[0]}66` }}
-            >
+            <blockquote className="mt-2 sm:mt-4 border-l-2 pl-2 sm:pl-4 font-mono text-[9px] sm:text-sm leading-relaxed text-ink/55 text-center sm:text-left break-words" style={{ borderColor: project.accent[0], boxShadow: `-4px 0 8px -6px ${project.accent[0]}66` }}>
               “{project.quote}”
             </blockquote>
 
             {project.description && (
-              <p className="mt-2 sm:mt-6 text-[10px] sm:text-sm leading-relaxed text-ink/60 text-center sm:text-left">{project.description}</p>
+              <p className="mt-1 sm:mt-3 text-[9px] sm:text-sm leading-relaxed text-ink/60 text-center sm:text-left break-words">{project.description}</p>
             )}
 
             <div className="mt-3 sm:mt-10 flex flex-col items-center justify-center gap-2 sm:flex-row sm:justify-start sm:gap-5">

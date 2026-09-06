@@ -222,7 +222,7 @@
 
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-[1400px] px-[60px] sm:px-[40px] md:px-[60px];
+    @apply mx-auto w-full max-w-[1400px] px-3 sm:px-[40px] md:px-[60px];
   }
   .section-pad {
     @apply py-16 sm:py-20;
