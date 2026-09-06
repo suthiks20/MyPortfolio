@@ -156,7 +156,7 @@ function Contact() {
       />
 
       <div className="container-x relative w-full text-center">
-        <p className="cta-headline font-display text-[clamp(52px,4.6vw,84px)] font-black leading-[1.02] text-ink">
+        <p className="cta-headline font-display text-[clamp(40px,9vw,84px)] font-black leading-[1.1] text-ink text-center">
           LET&apos;S BUILD SOMETHING
           <br />
           <span className="bg-linear-to-r from-cyan via-magenta to-lime bg-clip-text text-transparent drop-shadow-[0_0_32px_rgba(255,0,110,0.35)]">
@@ -164,7 +164,7 @@ function Contact() {
           </span>
         </p>
 
-        <Divider className="cta-divider mx-auto mt-12 w-[min(760px,85%)] origin-left" />
+        <Divider className="cta-divider mx-auto mt-10 sm:mt-12 w-[min(600px,90%)] origin-left" />
 
         {/* CONTACT INFO */}
         <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-16">

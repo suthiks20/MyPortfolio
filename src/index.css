@@ -222,10 +222,10 @@
 
 @layer components {
   .container-x {
-    @apply mx-auto w-full max-w-[1400px] px-[60px];
+    @apply mx-auto w-full max-w-[1400px] px-[60px] sm:px-[40px] md:px-[60px];
   }
   .section-pad {
-    @apply py-20;
+    @apply py-16 sm:py-20;
   }
   .divider {
     height: 2px;
@@ -276,7 +276,7 @@
     background-size: 64px 64px;
   }
   .pill {
-    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-5 py-2 font-mono text-sm text-ink;
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/5 px-4 py-1.5 sm:px-5 sm:py-2 font-mono text-xs sm:text-sm text-ink;
     transition:
       transform 0.15s ease-out,
       box-shadow 0.15s ease-out,

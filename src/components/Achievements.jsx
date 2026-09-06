@@ -55,24 +55,23 @@ function Achievements() {
     <Section id="achievements" ref={ref}>
       <div className="container-x section-pad w-full">
         <SectionTag index="05" label="Achievements" />
-        <h2 className="ach-title mt-6 font-display text-5xl font-black text-ink drop-shadow-[0_0_24px_rgba(255,0,110,0.25)]">
+        <h2 className="ach-title mt-6 font-display text-4xl sm:text-5xl font-black text-ink text-center drop-shadow-[0_0_24px_rgba(255,0,110,0.25)]">
           ACHIEVEMENTS
         </h2>
 
         <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {ACHIEVEMENTS.map((a) => (
-            <Tilt key={a.title} max={7} scale={1.04} className="col-span-1">
-            <div
-              className="ach-card card-glow glass group flex h-full cursor-pointer flex-col items-center rounded-2xl px-6 py-9 text-center hover:scale-105 hover:border-cyan/40 hover:shadow-[0_0_36px_rgba(0,217,255,0.25),0_0_36px_rgba(255,0,110,0.15)]"
+            <Tilt key={a.title} max={7} scale={1.04} className="col-span-1">              <div
+              className="ach-card card-glow glass group flex h-full cursor-pointer flex-col items-center rounded-2xl px-4 py-6 sm:px-6 sm:py-9 text-center hover:scale-105 hover:border-cyan/40 hover:shadow-[0_0_36px_rgba(0,217,255,0.25),0_0_36px_rgba(255,0,110,0.15)]"
               onMouseDown={(e) => e.currentTarget.classList.add('animate-badge-pulse')}
               onAnimationEnd={(e) => e.currentTarget.classList.remove('animate-badge-pulse')}
             >
-              <span className="ach-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-cyan/15 to-magenta/15 text-3xl animate-float-glow">
+              <span className="ach-icon flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl bg-linear-to-br from-cyan/15 to-magenta/15 text-2xl sm:text-3xl animate-float-glow">
                 {a.icon}
               </span>
-              <p className="mt-4 sm:mt-6 font-display text-lg font-extrabold tracking-wide text-ink">{a.title}</p>
-              <p className="mt-1 sm:mt-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-cyan">
-                <Trophy size={12} /> {a.subtitle}
+              <p className="mt-3 sm:mt-4 sm:mt-6 font-display text-base sm:text-lg font-extrabold tracking-wide text-ink text-center">{a.title}</p>
+              <p className="mt-1 sm:mt-2 flex items-center gap-1.5 font-mono text-[10px] sm:text-xs uppercase tracking-[0.2em] text-cyan">
+                <Trophy size={10} sm:size={12} /> {a.subtitle}
               </p>
             </div>
             </Tilt>

@@ -65,13 +65,13 @@ function Hero() {
       />
 
       <Tilt max={2.2} scale={1} perspective={1200} className="relative w-full">
-      <div className="container-x py-28 text-center">
+      <div className="container-x py-16 sm:py-20 sm:py-28 text-center">
         <p className="hero-title-part mono-label mb-10 justify-center">
           <span className="text-magenta">$</span> Full-stack engineer — AI systems
         </p>
 
         <h1 className="hero-title-part font-display font-black leading-none tracking-tight drop-shadow-[0_0_42px_rgba(0,217,255,0.3)]">
-          <span className="block text-[clamp(64px,5.2vw,96px)] text-ink">
+          <span className="block text-[clamp(48px,10vw,96px)] text-ink text-center">
             PORTFOLIO{' '}
             <span className="text-cyan drop-shadow-[0_0_28px_rgba(0,217,255,0.85)]">✖</span>{' '}
             DEVELOPER
@@ -80,7 +80,7 @@ function Hero() {
 
         <div className="hero-divider mx-auto mt-12 w-[min(640px,80%)] origin-left" />
 
-        <p className="hero-sub mt-10 font-display text-2xl font-medium leading-snug text-ink/75">
+        <p className="hero-sub mt-10 font-display text-xl sm:text-2xl font-medium leading-snug text-ink/75 text-center">
           {SUB_LINES.map((line) => (
             <span key={line} className="block">
               {line}
