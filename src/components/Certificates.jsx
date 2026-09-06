@@ -129,45 +129,69 @@ function Carousel({ group, onClick }) {
 
 function Lightbox({ cert, onClose }) {
   if (!cert) return null
+  const imageRef = useRef(null)
+  const [zoom, setZoom] = useState(1)
+
+  const handleWheel = (e) => {
+    if (!imageRef.current || !cert.image) return
+    e.preventDefault()
+    setZoom((z) => Math.max(1, Math.min(5, z + (e.deltaY > 0 ? -0.1 : 0.1))))
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
-      animate={{ opacity: 0.88 }}
+      animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.32 }}
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/78 backdrop-blur-xl"
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#0a0a0a]"
       onClick={onClose}
     >
       <motion.div
-        initial={{ opacity: 0, scale: 0.92 }}
+        initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.92 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 24 }}
-        className="relative max-w-[960px] w-full rounded-2xl overflow-hidden shadow-[0_0_60px_rgba(0,217,255,0.4)]"
+        exit={{ opacity: 0, scale: 0.95 }}
+        transition={{ type: 'spring', stiffness: 280, damping: 26 }}
+        className="relative w-full max-w-3xl rounded-2xl overflow-hidden shadow-[0_0_50px_rgba(0,217,255,0.35)] border border-white/10"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative flex-1 bg-[#151821]">
-          <img
-            src={cert.image}
-            alt={`${cert.company} certificate`}
-            className="h-full w-full"
-            loading="lazy"
-          />
-        </div>
-        <div className="flex flex-col gap-4 p-6">
-          <div className="flex items-center justify-between">
-            <p className="font-mono text-xs uppercase tracking-[0.35em] text-cyan">{cert.category}</p>
-            <button
-              type="button"
-              onClick={onClose}
-              className="group flex h-8 w-8 items-center justify-center rounded-full border border-white/10 text-ink/70 transition hover:border-cyan hover:text-cyan hover:shadow-[0_0_14px_rgba(0,217,255,0.4)]"
-            >
-              <X size={16} strokeWidth={2.5} />
-            </button>
+        {/* image area — scrollable zoom only */}
+        <div
+          ref={imageRef}
+          className="relative overflow-auto bg-[#111] max-h-[60vh]"
+          onWheel={handleWheel}
+        >
+          <div
+            className="flex items-center justify-center p-4"
+            style={{ transform: `scale(${zoom})`, transformOrigin: 'center center' }}
+          >
+            {cert.image && (
+              <img
+                src={cert.image}
+                alt={`${cert.company} certificate`}
+                className="h-auto w-auto shadow-lg"
+                loading="lazy"
+                style={{ maxHeight: '55vh', maxWidth: '100%' }}
+              />
+            )}
           </div>
-          <p className="font-display text-2xl font-bold text-ink">{cert.company}</p>
-          <p className="text-md text-muted">{cert.role}</p>
-          <p className="font-mono text-sm text-ink/60">{cert.period}</p>
+        </div>
+
+        {/* metadata bar — always visible, white text */}
+        <div className="flex items-center justify-between px-5 py-4 bg-[#0e0e14] border-t border-white/10">
+          <div>
+            <p className="font-mono text-[11px] uppercase tracking-[0.35em] text-cyan">{cert.category}</p>
+            <p className="mt-0.5 font-display text-lg font-bold text-white">{cert.company}</p>
+            <p className="text-sm text-ink/70">{cert.role}</p>
+            <p className="font-mono text-xs text-ink/50">{cert.period}</p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-cyan/20 hover:text-cyan active:scale-90"
+          >
+            <X size={22} strokeWidth={2.5} />
+          </button>
         </div>
       </motion.div>
     </motion.div>
@@ -235,6 +259,11 @@ export default function Certificates() {
 
   const openCert = (cert) => setLightbox(cert)
   const closeCert = () => setLightbox(null)
+
+  useEffect(() => {
+    document.body.style.overflow = lightbox ? 'hidden' : ''
+    return () => { document.body.style.overflow = '' }
+  }, [lightbox])
 
   return (
     <Section id="certificates" ref={ref}>
