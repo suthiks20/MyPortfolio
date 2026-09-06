@@ -6,17 +6,17 @@ import { GithubIcon, LinkedinIcon } from './BrandIcons'
 export function Header() {
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-white/5 bg-bg/70 backdrop-blur-md">
-      <div className="container-x flex items-center justify-between py-4">
-        <a href="#hero" className="flex items-center gap-3 font-mono text-sm tracking-[0.3em] text-ink">
-          <span className="inline-block h-2.5 w-2.5 rounded-[3px] bg-cyan shadow-[0_0_12px_#00d9ff]" />
+      <div className="container-x flex items-center justify-between py-3 md:py-4">
+        <a href="#hero" className="flex items-center gap-2 sm:gap-3 font-mono text-xs sm:text-sm tracking-[0.3em] text-ink">
+          <span className="inline-block h-2 w-2.5 rounded-[3px] bg-cyan shadow-[0_0_12px_#00d9ff]" />
           SUTHIKSHAN&nbsp;K
         </a>
-        <div className="flex items-center gap-7">
-          <span className="flex items-center gap-2.5 font-mono text-xs uppercase tracking-[0.25em] text-lime">
-            <span className="h-2 w-2 rounded-full bg-lime animate-pulse-green" />
+        <div className="flex items-center gap-3 sm:gap-7">
+          <span className="flex items-center gap-2 font-mono text-[10px] sm:text-xs uppercase tracking-[0.25em] text-lime">
+            <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-lime animate-pulse-green" />
             Open to work
           </span>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <a
               href={LINKS.github}
               target="_blank"
@@ -24,7 +24,7 @@ export function Header() {
               aria-label="GitHub"
               className="text-ink/60 transition-colors duration-150 hover:text-cyan"
             >
-              <GithubIcon size={18} />
+              <GithubIcon size={16} />
             </a>
             <a
               href={LINKS.linkedin}
@@ -33,7 +33,7 @@ export function Header() {
               aria-label="LinkedIn"
               className="text-ink/60 transition-colors duration-150 hover:text-cyan"
             >
-              <LinkedinIcon size={18} />
+              <LinkedinIcon size={16} />
             </a>
           </div>
         </div>

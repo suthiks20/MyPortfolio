@@ -77,7 +77,7 @@ function Skills() {
           SKILLS &amp; TECH
         </h2>
 
-        <div className="mt-14 grid grid-cols-2 gap-x-16 gap-y-14">
+        <div className="mt-14 grid grid-cols-1 gap-y-10 md:grid-cols-2 md:gap-x-16 md:gap-y-14">
           {SKILLS.map((group) => (
             <div key={group.category}>
               <div className="flex items-center gap-5">

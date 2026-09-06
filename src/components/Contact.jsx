@@ -167,49 +167,49 @@ function Contact() {
         <Divider className="cta-divider mx-auto mt-12 w-[min(760px,85%)] origin-left" />
 
         {/* CONTACT INFO */}
-        <div className="mt-12 flex items-center justify-center gap-16">
+        <div className="mt-12 flex flex-col items-center gap-4 sm:flex-row sm:items-center sm:justify-center sm:gap-16">
           <a href={`mailto:${EMAIL}`} className="cta-detail group flex items-center gap-4">
-            <Mail className="text-cyan transition-transform duration-150 group-hover:scale-110" size={26} />
-            <span className="font-mono text-xl text-ink/85 transition-colors duration-150 group-hover:text-cyan">
+            <Mail className="text-cyan transition-transform duration-150 group-hover:scale-110" size={22} />
+            <span className="font-mono text-base sm:text-xl text-ink/85 transition-colors duration-150 group-hover:text-cyan">
               {EMAIL}
             </span>
           </a>
-          <span className="h-8 w-px bg-white/15" />
+          <span className="h-8 w-px bg-white/15 hidden sm:block" />
           <a href={`tel:${LINKS.phone}`} className="cta-detail group flex items-center gap-4">
-            <Phone className="text-magenta transition-transform duration-150 group-hover:scale-110" size={26} />
-            <span className="font-mono text-xl text-ink/85 transition-colors duration-150 group-hover:text-magenta">
+            <Phone className="text-magenta transition-transform duration-150 group-hover:scale-110" size={22} />
+            <span className="font-mono text-base sm:text-xl text-ink/85 transition-colors duration-150 group-hover:text-magenta">
               +91 {LINKS.phone}
             </span>
           </a>
         </div>
 
         {/* SOCIAL ICONS */}
-        <div className="mt-10 flex items-center justify-center gap-6">
+        <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
           <a
             href={LINKS.linkedin}
             target="_blank"
             rel="noreferrer"
             aria-label="LinkedIn"
-            className="cta-social glass flex h-14 w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-cyan hover:shadow-[0_0_24px_rgba(0,217,255,0.45)]"
+            className="cta-social glass flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-cyan hover:shadow-[0_0_24px_rgba(0,217,255,0.45)]"
           >
-            <LinkedinIcon size={22} />
+            <LinkedinIcon size={18} sm:size={22} />
           </a>
           <a
             href={LINKS.github}
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="cta-social glass flex h-14 w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-magenta hover:shadow-[0_0_24px_rgba(255,0,110,0.45)]"
+            className="cta-social glass flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-magenta hover:shadow-[0_0_24px_rgba(255,0,110,0.45)]"
           >
-            <GithubIcon size={22} />
+            <GithubIcon size={18} sm:size={22} />
           </a>
           <a
             href="/ai.pdf%20(4)%20(1).pdf"
             download
-            className="cta-social glass flex h-14 w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-lime hover:shadow-[0_0_24px_rgba(132,204,22,0.45)]"
+            className="cta-social glass flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full text-ink/80 transition-all duration-150 hover:scale-110 hover:text-lime hover:shadow-[0_0_24px_rgba(132,204,22,0.45)]"
             aria-label="Download Resume"
           >
-            <FileDown size={22} />
+            <FileDown size={18} sm:size={22} />
           </a>
         </div>
 
@@ -229,18 +229,18 @@ function Contact() {
           </div>
 
           {/* avatar + status */}
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-4">
             <div className="relative">
               <div className="absolute -inset-1.5 rounded-full opacity-30 blur-sm" style={{ background: 'conic-gradient(from 0deg, #00d9ff, #ff006e, #84cc16, #00d9ff)' }} />
-              <div className="relative h-14 w-14 overflow-hidden rounded-full border-2 border-bg shadow-[0_0_18px_rgba(0,217,255,0.3)]">
+              <div className="relative h-12 w-12 sm:h-14 sm:w-14 overflow-hidden rounded-full border-2 border-bg shadow-[0_0_18px_rgba(0,217,255,0.3)]">
                 <img
                   src="/images/suthikshan.jpg"
                   alt="Suthikshan K"
                   className="h-full w-full object-cover"
                 />
               </div>
-              <span className="absolute -right-0.5 -bottom-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-lime/90 shadow-[0_0_10px_#84cc16]">
-                <span className="h-2 w-2 rounded-full bg-white animate-pulse" />
+              <span className="absolute -right-0.5 -bottom-0.5 flex h-3 w-3 sm:h-4 sm:w-4 items-center justify-center rounded-full bg-lime/90 shadow-[0_0_10px_#84cc16]">
+                <span className="h-1.5 w-1.5 sm:h-2 sm:w-2 rounded-full bg-white animate-pulse" />
               </span>
             </div>
             <div className="text-left">
@@ -255,7 +255,7 @@ function Contact() {
           {/* form panel */}
           <form
             onSubmit={handleSend}
-            className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-white/[0.02] p-6 sm:p-8 shadow-[0_0_40px_rgba(0,217,255,0.06)]"
+            className="relative w-full max-w-lg rounded-2xl border border-white/10 bg-white/[0.02] p-5 sm:p-6 sm:p-8 shadow-[0_0_40px_rgba(0,217,255,0.06)]"
           >
             {/* STEP 3: confirmation */}
             {sent && (
@@ -479,12 +479,12 @@ function Contact() {
 
           {/* CTA buttons (visible when not sent) */}
           {!sent && (
-            <div className="flex items-center justify-center gap-5">
-              <RippleButton href={`mailto:${EMAIL}`} className="cta-btn btn-primary">
-                <Mail size={16} /> Email
+            <div className="flex flex-col items-center gap-3 mt-2 sm:flex-row sm:items-center sm:justify-center sm:gap-5">
+              <RippleButton href={`mailto:${EMAIL}`} className="cta-btn btn-primary w-full sm:w-auto">
+                <Mail size={15} /> Email
               </RippleButton>
-              <RippleButton onClick={letsTalkGmail} className="cta-btn btn-ghost">
-                <MessageCircle size={16} /> Let&apos;s Talk
+              <RippleButton onClick={letsTalkGmail} className="cta-btn btn-ghost w-full sm:w-auto">
+                <MessageCircle size={15} /> Let&apos;s Talk
               </RippleButton>
             </div>
           )}

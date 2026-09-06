@@ -67,7 +67,7 @@ function CertCard({ cert, onClick }) {
       className="cert-card relative flex h-full cursor-pointer flex-col rounded-xl border border-cyan/30 bg-[#13131a]/90 backdrop-blur-[12px] shadow-[0_0_15px_rgba(0,217,255,0.18)] transition-colors duration-150 hover:border-cyan/70 hover:shadow-[0_0_28px_#00d9ff,0_0_16px_#ff006e]"
       onClick={() => onClick?.(cert)}
     >
-      <div className="relative flex-1">
+      <div className="relative flex-1 min-h-0">
         <img
           src={cert.image}
           alt={`${cert.company} certificate`}
@@ -75,8 +75,7 @@ function CertCard({ cert, onClick }) {
           loading="lazy"
         />
       </div>
-      <div className="mt-2 flex flex-col text-center">
-        <p className="font-display text-sm font-bold text-ink">{cert.company}</p>
+      <div className="mt-2 flex flex-col text-center">          <p className="font-display text-xs sm:text-sm font-bold text-ink">{cert.company}</p>
         <p className="text-xs text-cyan">{cert.role}</p>
         <p className="mt-1 font-mono text-[10px] text-ink/40">{cert.period}</p>
       </div>
@@ -97,9 +96,9 @@ function Carousel({ group }) {
   return (
     <div
       ref={scrollRef}
-      className="relative flex snap-x snap-mandatory overflow-x-auto overflow-y-clip scroll-smooth scrollbar-hide"
+      className="relative flex snap-x snap-mandatory overflow-x-auto overflow-y-clip scroll-smooth scrollbar-hide -mx-2 px-2"
     >
-      <div className="flex gap-6 px-1 py-4">
+      <div className="flex gap-4 sm:gap-6 px-1 py-4">
         {group.map((cert) => (
           <CertCard key={cert.image} cert={cert} onClick={() => onClick?.(cert)} />
         ))}

@@ -196,6 +196,14 @@
     min-width: 1280px;
     overflow-x: hidden;
   }
+
+  /* Mobile devices: allow content to fit viewport width */
+  @media (max-width: 767px) {
+    body {
+      min-width: 0;
+      overflow-x: auto;
+    }
+  }
   ::selection {
     @apply bg-cyan text-bg;
   }

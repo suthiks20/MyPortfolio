@@ -59,7 +59,7 @@ function Achievements() {
           ACHIEVEMENTS
         </h2>
 
-        <div className="mt-14 grid grid-cols-5 gap-6">
+        <div className="mt-14 grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-5 gap-6">
           {ACHIEVEMENTS.map((a) => (
             <Tilt key={a.title} max={7} scale={1.04} className="col-span-1">
             <div
@@ -70,8 +70,8 @@ function Achievements() {
               <span className="ach-icon flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br from-cyan/15 to-magenta/15 text-3xl animate-float-glow">
                 {a.icon}
               </span>
-              <p className="mt-6 font-display text-lg font-extrabold tracking-wide text-ink">{a.title}</p>
-              <p className="mt-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-cyan">
+              <p className="mt-4 sm:mt-6 font-display text-lg font-extrabold tracking-wide text-ink">{a.title}</p>
+              <p className="mt-1 sm:mt-2 flex items-center gap-1.5 font-mono text-xs uppercase tracking-[0.2em] text-cyan">
                 <Trophy size={12} /> {a.subtitle}
               </p>
             </div>

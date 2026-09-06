@@ -451,7 +451,7 @@ function ProjectSection({ project }) {
       <div className="container-x section-pad w-full">
         <div className="grid grid-cols-12 items-center gap-14">
           {/* visual — left */}
-          <div className="proj-card relative col-span-6">
+          <div className="proj-card relative col-span-12 md:col-span-6">
             <div
               aria-hidden
               className="absolute -inset-4 rounded-[28px] opacity-70 blur-2xl animate-pulse-soft"
@@ -463,7 +463,7 @@ function ProjectSection({ project }) {
           </div>
 
           {/* copy — right */}
-          <div className="proj-text col-span-6">
+          <div className="proj-text col-span-12 md:col-span-6">
             <SectionTag index={project.index} label={project.name} />
             <h3 className="mt-8 font-display text-6xl font-black leading-none text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)]">
               {project.name}

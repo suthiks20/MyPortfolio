@@ -111,16 +111,23 @@ function Experience() {
         </h2>
 
         <div className="relative mt-14 max-w-4xl">
-          {/* glow beam behind spine */}
-          <div
-            aria-hidden
-            className="pointer-events-none absolute bottom-0 left-[13px] top-0 w-12 -translate-x-1/2 rounded-full bg-cyan/15 blur-2xl"
-          />
-          {/* timeline spine */}
-          <div className="exp-line absolute bottom-4 left-[13px] top-4 w-[2px] origin-top bg-linear-to-b from-cyan via-magenta to-lime shadow-[0_0_14px_rgba(0,217,255,0.6)]" />
+          {/* timeline only on md+ */}
+          <div className="hidden md:block">
+            {/* glow beam behind spine */}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute bottom-0 left-[13px] top-0 w-12 -translate-x-1/2 rounded-full bg-cyan/15 blur-2xl"
+            />
+            {/* timeline spine */}
+            <div className="exp-line absolute bottom-4 left-[13px] top-4 w-[2px] origin-top bg-linear-to-b from-cyan via-magenta to-lime shadow-[0_0_14px_rgba(0,217,255,0.6)]" />
+          </div>
 
           {EXPERIENCE.map((job, i) => (
-            <div key={job.company}>
+            <div key={job.company} className="md:pl-16">
+              {/* mobile: dot on left edge, no spine */}
+              <div className="absolute left-0 top-2 hidden md:block">
+                <div className="exp-line w-[2px] origin-top bg-linear-to-b from-cyan via-magenta to-lime shadow-[0_0_14px_rgba(0,217,255,0.6)]" />
+              </div>
               <div className="exp-card relative pl-16 pb-12">
                 <span className="exp-dot absolute left-[5px] top-2 h-[18px] w-[18px] rounded-full border-2 border-magenta bg-bg animate-pulse-glow" />
 

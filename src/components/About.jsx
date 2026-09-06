@@ -100,23 +100,21 @@ function About() {
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-cyan/5 blur-[160px]"
-      />
-
-      <div className="container-x section-pad w-full">
-        <div className="grid grid-cols-12 items-center gap-x-12 gap-y-16">
+      />        <div className="container-x section-pad w-full">
+        <div className="grid grid-cols-12 items-center gap-x-6 md:gap-x-10 gap-y-16">
           {/* LEFT — words + stats + typewriter bio */}
-          <div className="col-span-3">
-            <SectionTag index="02" label="Creative Developer" />
-            <h2 className="about-creative mt-10 font-display text-6xl font-black leading-[0.95] text-outline">
+          <div className="col-span-12 md:col-span-4 flex flex-col items-center gap-y-6">
+            <SectionTag index="02" label="Creative Developer" className="justify-center" />
+            <h2 className="about-creative mt-10 font-display text-6xl font-black leading-[0.95] text-outline text-center">
               CREATIVE
             </h2>
-            <h2 className="about-developer font-display text-6xl font-black leading-[0.95] text-magenta glow-text-magenta">
+            <h2 className="about-developer font-display text-6xl font-black leading-[0.95] text-magenta glow-text-magenta text-center">
               DEVELOPER
             </h2>
 
-            <Divider className="about-divider mt-8 origin-left" />
+            <Divider className="about-divider mt-8 origin-left mx-auto w-[min(350px,55%)]" />
 
-            <div className="mt-8 flex items-end gap-8">
+            <div className="mt-8 flex items-end justify-center gap-8">
               {STATS.map((s) => (
                 <div key={s.label} className="about-stat">
                   <p className="font-display text-4xl font-black text-cyan drop-shadow-[0_0_20px_rgba(0,217,255,0.6)]">
@@ -127,7 +125,7 @@ function About() {
               ))}
             </div>
 
-            <p className="mt-10 max-w-sm font-mono text-sm leading-relaxed text-ink/55">
+            <p className="mt-10 max-w-sm font-mono text-sm leading-relaxed text-ink/55 text-center">
               {BIO.split('').map((ch, i) => (
                 <span key={i} className="about-bio-char">
                   {ch === ' ' ? '\u00A0' : ch}
@@ -137,10 +135,10 @@ function About() {
           </div>
 
           {/* CENTER — profile photo */}
-          <div className="col-span-6 flex flex-col items-center">
+          <div className="col-span-12 md:col-span-4 flex flex-col items-center">
             <div className="relative">
               <div className="about-parallax relative">
-                <Tilt max={10} scale={1.04} className="about-avatar relative h-80 w-80 overflow-hidden">
+                <Tilt max={10} scale={1.04} className="about-avatar relative h-64 w-64 sm:h-80 sm:w-80 overflow-hidden">
                   {/* soft ambient glow behind the image — blends into dark bg */}
                   <div
                     aria-hidden
@@ -171,22 +169,22 @@ function About() {
           </div>
 
           {/* RIGHT — tagline + identity + tech pills */}
-          <div className="col-span-3">
-            <p className="about-tagline font-display text-2xl font-bold leading-snug text-ink/90">
+          <div className="col-span-12 md:col-span-4 flex flex-col items-center gap-y-6">
+            <p className="about-tagline font-display text-2xl font-bold leading-snug text-ink/90 text-center">
               I build digital worlds where{' '}
               <span className="text-cyan drop-shadow-[0_0_18px_rgba(0,217,255,0.6)]">design</span> meets{' '}
               <span className="text-lime drop-shadow-[0_0_18px_rgba(132,204,22,0.5)]">code</span>.
             </p>
 
-            <div className="mt-10 space-y-1.5">
+            <div className="mt-10 space-y-1.5 text-center">
               {BIO_LINES.map((line) => (
-                <p key={line.key} className={`about-bio-line ${line.cls}`}>
+                <p key={line.key} className={`about-bio-line ${line.cls}`} style={{ textAlign: 'center' }}>
                   {line.text}
                 </p>
               ))}
             </div>
 
-            <div className="mt-8 flex max-w-xs flex-wrap gap-3">
+            <div className="mt-8 flex max-w-xs flex-wrap justify-center gap-3">
               {ABOUT_TECH.map((t) => (
                 <span key={t} className="about-pill pill">
                   {t}
