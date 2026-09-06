@@ -71,22 +71,24 @@ function Hero() {
         </p>
 
         <h1 className="hero-title-part font-display font-black leading-none tracking-tight drop-shadow-[0_0_42px_rgba(0,217,255,0.3)]">
-          <span className="block text-[clamp(48px,10vw,96px)] text-ink text-center">
-            PORTFOLIO{' '}
-            <span className="text-cyan drop-shadow-[0_0_28px_rgba(0,217,255,0.85)]">✖</span>{' '}
-            DEVELOPER
+          <span className="block text-center">
+            <span className="sm:inline block text-[clamp(44px,9vw,96px)]">PORTFOLIO</span>
+            <span className="inline-block text-cyan drop-shadow-[0_0_28px_rgba(0,217,255,0.85)] mx-1">✖</span>
+            <span className="sm:inline block text-[clamp(44px,9vw,96px)]">DEVELOPER</span>
           </span>
         </h1>
 
-        <div className="hero-divider mx-auto mt-12 w-[min(640px,80%)] origin-left" />
+        <div className="hero-divider mx-auto mt-8 sm:mt-12 w-full sm:w-[min(640px,80%)] origin-left" />
 
-        <p className="hero-sub mt-10 font-display text-xl sm:text-2xl font-medium leading-snug text-ink/75 text-center">
-          {SUB_LINES.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </p>
+        <div className="mt-8 sm:mt-10 text-center">
+          <p className="font-display text-base sm:text-xl lg:text-2xl font-medium leading-snug text-ink/75">
+            {SUB_LINES.map((line) => (
+              <span key={line} className="block sm:inline">
+                {line}
+              </span>
+            ))}
+          </p>
+        </div>
       </div>
       </Tilt>
 

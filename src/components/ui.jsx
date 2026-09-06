@@ -14,10 +14,10 @@ export const Section = forwardRef(function Section({ id, className = '', childre
 
 export function SectionTag({ index, label, className = '' }) {
   return (
-    <p className={`mono-label flex items-center gap-4 ${className}`}>
+    <p className={`mono-label flex flex-col sm:flex-row items-center sm:items-center gap-1 sm:gap-4 ${className}`}>
       <span className="text-magenta">[{index}]</span>
-      <span>{label}</span>
-      <span className="h-px w-16 bg-cyan/50 shadow-[0_0_8px_rgba(0,217,255,0.6)]" />
+      <span className="sm:inline">{label}</span>
+      <span className="h-px w-full sm:w-16 bg-cyan/50 shadow-[0_0_8px_rgba(0,217,255,0.6)] sm:block" />
     </p>
   )
 }

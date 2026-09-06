@@ -464,13 +464,13 @@ function ProjectSection({ project }) {
 
           {/* copy — right */}
           <div className="proj-text col-span-12 md:col-span-6">
-            <SectionTag index={project.index} label={project.name} />
-            <h3 className="mt-8 font-display text-6xl font-black leading-none text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)]">
+            <SectionTag index={project.index} label={project.name} className="sm:block sm:items-start" />
+            <h3 className="mt-6 sm:mt-8 font-display text-4xl sm:text-5xl md:text-6xl font-black leading-none text-ink drop-shadow-[0_0_24px_rgba(0,217,255,0.25)] text-center sm:text-left">
               {project.name}
             </h3>
-            <p className="mt-4 text-lg text-ink/70">{project.tagline}</p>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-ink/70 text-center sm:text-left">{project.tagline}</p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-4 sm:mt-8 flex flex-wrap justify-center sm:justify-start gap-2 sm:gap-3">
               {project.tech.map((t) => (
                 <span key={t} className="proj-pill pill">
                   {t}
@@ -479,22 +479,22 @@ function ProjectSection({ project }) {
             </div>
 
             <blockquote
-              className="mt-8 border-l-2 pl-6 font-mono text-sm leading-relaxed text-ink/55"
+              className="mt-4 sm:mt-8 border-l-2 pl-4 sm:pl-6 font-mono text-xs sm:text-sm leading-relaxed text-ink/55 text-center sm:text-left"
               style={{ borderColor: project.accent[0], boxShadow: `-8px 0 18px -10px ${project.accent[0]}66` }}
             >
               “{project.quote}”
             </blockquote>
 
             {project.description && (
-              <p className="mt-6 text-sm leading-relaxed text-ink/60">{project.description}</p>
+              <p className="mt-3 sm:mt-6 text-xs sm:text-sm leading-relaxed text-ink/60 text-center sm:text-left">{project.description}</p>
             )}
 
-            <div className="mt-10 flex items-center gap-5">
-              <RippleButton href={project.live} target="_blank" rel="noreferrer" className="btn-primary">
-                <ExternalLink size={16} /> Live
+            <div className="mt-6 sm:mt-10 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-3 sm:gap-5">
+              <RippleButton href={project.live} target="_blank" rel="noreferrer" className="btn-primary w-full sm:w-auto">
+                <ExternalLink size={15} /> Live
               </RippleButton>
-              <RippleButton href={LINKS.github} target="_blank" rel="noreferrer" className="btn-ghost">
-                <GithubIcon size={16} /> GitHub
+              <RippleButton href={LINKS.github} target="_blank" rel="noreferrer" className="btn-ghost w-full sm:w-auto">
+                <GithubIcon size={15} /> GitHub
               </RippleButton>
             </div>
           </div>
